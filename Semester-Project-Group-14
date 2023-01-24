@@ -1,0 +1,128 @@
+#include<iostream>
+#include<fstream>
+#include<time.h>
+using namespace std; 
+int main()
+{
+	string a,b,c;
+	int pw;
+   	long long an,pn,cn,cardno;
+	ofstream data("bankaccount.txt");
+	cout<<"\t\tBANK ACCOUNT INFORMATION"<<endl;
+	cout<<"Enter name"<<endl;
+	cin>>a;
+	cout<<"Enter Father name"<<endl;
+	cin>>b;
+	cout<<"Enter the only city name"<<endl;
+	cin>>c;
+	cout<<"Phone Number"<<endl;
+	cin>>pn;
+	cout<<"CNIC no"<<endl;
+	cin>>cn;
+	cout<<endl<<endl<<"\t\tYour Account Number"<<endl;
+	an=1234567890123456;
+	cout<<an<<endl;
+    cout<<endl<<"\t\tYour Card Number"<<endl;
+    cardno=1234567890123; 
+	cout<<cardno<<endl;
+	cout<<"Enter the Pin"<<endl;
+	cin>>pw;
+	
+	cout<<"\t\tYou are enter the ATM Machine"<<endl;
+	int pw1,tries;
+	long long cardno2,cardno1;
+	cout<<"Enter the Card No"<<endl;
+	cin>>cardno1;
+	cout<<"Enter the Pin"<<endl;
+	cin>>pw1;{
+	if(cardno==cardno1&&pw==pw1)
+	cout<<"Login Successfully"<<endl;
+	else
+	cout<<"Login failed"<<endl;
+	while(!cardno==cardno1&&pw==pw1,tries<=2)
+	{
+		cout<<"try again"<<endl;
+		cout<<"Enter the cardno1"<<endl;
+		cin>>cardno1;
+		cout<<"Enter the Pin"<<endl;
+		cin>>pw;
+		tries++;
+	}{
+	system("pause");
+	}
+	}
+    {	
+	double transection,balance,deposit,withdraw; 
+	balance=13000;
+	int option;
+	do{
+	cout<<"------------------------------------MENU-----------------------------------------"<<endl;
+	cout<<"-\t              1: Check Balance                                               -"<<endl;
+	cout<<"-\t              2: Deposit Money                                               -"<<endl;
+	cout<<"-\t              3: Transfer & Paymant Money                                   -"<<endl;		
+	cout<<"-\t              4: Withdraw                                                    -"<<endl;	
+	cout<<"-\t              5: Exit                                                        -"<<endl;	
+	cout<<"---------------------------------------------------------------------------------"<<endl;
+	cout<<endl<<"\tPlease enter the option"<<endl;
+	cin>>option;
+	switch(option)
+	{
+    case 1:
+	 cout<<endl<<"\tYour balance = "<<balance<<endl;
+	 break;
+	 
+	case 2:
+	 cout<<endl<<"\tYou want to amount deposit = "<<endl;
+	 cin>>deposit;
+	 balance+=deposit;//total=balance+deposit;
+     cout<<"Your currant balance = "<<balance<<endl;
+	 break;
+	 
+	case 3:
+	cout<<endl<<"\tYou want to transection amount in other account"<<endl;
+	cin>>transection;
+	balance=balance-transection;//total=balance-transection;
+	cout<<"Enter the card no"<<endl;
+	cin>>cardno2;
+	if(balance>transection)
+	cout<<"Your transection successfully"<<endl<<"Your current balance = "<<balance<<endl;
+	else
+	cout<<"Your amount is low"<<endl;
+	break;
+	
+	case 4:
+	cout<<endl<<"\tHow much want to withdrawal amount = "<<endl;
+	cin>>withdraw;
+	balance=balance-withdraw; //total=balance-withdraw;
+	if(balance>withdraw)
+    cout<<"Your currant balance = "<<balance<<endl;
+	else
+	cout<<"This amount is not available in account"<<endl;
+	break;
+	
+	case 5:
+	cout<<"Exit"<<endl;
+	break;
+	
+	defult:
+	cout<<"Invailed option";
+	}
+	}
+	while(option!=5);
+    system("pause");
+	}
+	data.open("transection.txt",ios::app|ios::out|ios::in); 
+	time_t ct=time(0);
+	string currenttime=ctime(&ct);
+	cout<<currenttime <<endl;
+	data<<"Date and Time"<<ct<<endl;
+	
+data<<"Name ="<<a<<endl<<"Father Name = "<<b<<endl<<"Home Address = "<<c<<endl<<"Phone Number =  "<<pn<<endl<<"CNIC No ="<<cn<<endl<<" Account Number = "<<an<<endl<<"Card no = "<<cardno<<endl<<"Password = "<<pw<<endl;
+	data.close();
+	ifstream readdata("bankaccount.txt");
+	while(getline(readdata,(a,b,c)))
+	{cout<<a<<b<<c<<endl;
+	readdata.close();
+	}
+
+	}
